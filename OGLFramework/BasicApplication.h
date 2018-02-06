@@ -63,5 +63,6 @@ public:
 };
 
 std::unique_ptr<BasicApp> makeExample();
+void run_app(const char* window_title, int argc, char** argv);
 
 #endif

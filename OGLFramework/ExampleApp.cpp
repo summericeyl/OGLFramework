@@ -43,10 +43,10 @@ ExampleApp::ExampleApp()
 		fs.Source(" \
 				#version 330\n \
 				in vec4 vertColor; \
-				out vec4 fragColor; \
+				out vec4 color; \
 				void main(void) \
 				{ \
-					fragColor = vertColor; \
+					color = vertColor; \
 				} \
 			");
 		fs.Compile();
@@ -98,6 +98,7 @@ ExampleApp::ExampleApp()
 	Buffer::Data(Buffer::Target::Array, 9, triangle_colors);
 	// setup the vertex attribs array
 	VertexArrayAttrib(prog, "Color").Setup<GLfloat>(3).Enable();
+	// VertexArrayAttrib(prog, "Color").Setup<GLfloat>(3).Disable();
 
 	gl.ClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 	gl.Disable(Capability::DepthTest);
