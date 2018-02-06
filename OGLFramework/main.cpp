@@ -33,27 +33,6 @@ public:
 	}
 };
 
-
-class GLAPIInitializer
-{
-public:
-	GLAPIInitializer(
-		int /*gl_ver_major*/ = 3,
-		int /*gl_ver_minor*/ = 3
-	)
-	{
-		glewExperimental = GL_TRUE;
-		GLenum init_result = glewInit();
-		glGetError();
-		if (init_result != GLEW_OK)
-		{
-			throw std::runtime_error(
-				"OpenGL/GLEW initialization error."
-			);
-		}
-	}
-};
-
 void run_loop(
 	std::unique_ptr<BasicApp>& app,
 	GLFWwindow* window,
