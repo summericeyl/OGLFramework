@@ -6,62 +6,46 @@ ExampleApp::ExampleApp()
 	try
 	{
 		// Set the vertex shader source
-		vs.Source(" \
-				#version 330\n \
-				in vec3 Position; \
-				in vec3 Color; \
-				out vec4 vertColor; \
-				void main(void) \
-				{ \
-					gl_Position = vec4(Position, 1.0); \
-					vertColor = vec4(Color, 1.0); \
-				} \
-			");
+		std::string vs_string = read_from_file("../media/glsl/glsl.vs");
+		vs.Source(vs_string.c_str());
 		// compile it
 		vs.Compile();
 	}
 	catch (CompileError&)
 	{
-		// Set the fallback vertex shader source
-		vs.Source(" \
-				#version 120\n \
-				attribute vec3 Position; \
-				attribute vec3 Color; \
-				varying vec4 vertColor; \
-				void main(void) \
-				{ \
-					gl_Position = vec4(Position, 1.0); \
-					vertColor = vec4(Color, 1.0); \
-				} \
-			");
-		// compile it
-		vs.Compile();
+// 		// Set the fallback vertex shader source
+// 		vs.Source(" \
+// 				#version 120\n \
+// 				attribute vec3 Position; \
+// 				attribute vec3 Color; \
+// 				varying vec4 vertColor; \
+// 				void main(void) \
+// 				{ \
+// 					gl_Position = vec4(Position, 1.0); \
+// 					vertColor = vec4(Color, 1.0); \
+// 				} \
+// 			");
+// 		// compile it
+// 		vs.Compile();
 	}
 
 	try
 	{
-		fs.Source(" \
-				#version 330\n \
-				in vec4 vertColor; \
-				out vec4 color; \
-				void main(void) \
-				{ \
-					color = vertColor; \
-				} \
-			");
+		std::string fs_string = read_from_file("../media/glsl/glsl.fs");
+		fs.Source(fs_string.c_str());
 		fs.Compile();
 	}
 	catch (CompileError&)
 	{
-		fs.Source(" \
-				#version 120\n \
-				varying vec4 vertColor; \
-				void main(void) \
-				{ \
-					gl_FragColor = vertColor; \
-				} \
-			");
-		fs.Compile();
+// 		fs.Source(" \
+// 				#version 120\n \
+// 				varying vec4 vertColor; \
+// 				void main(void) \
+// 				{ \
+// 					gl_FragColor = vertColor; \
+// 				} \
+// 			");
+// 		fs.Compile();
 	}
 
 	// attach the shaders to the program

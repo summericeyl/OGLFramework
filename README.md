@@ -1,2 +1,5 @@
-OGLFramework
+# OGLFramework
 简化 OGLPlus 例子上的框架
+
+## 问题
+* 为何片段着色器代码不允许对输出变量赋值 vec4(1.0, 1.0, 1.0, 1.0)

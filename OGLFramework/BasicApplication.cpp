@@ -2,6 +2,7 @@
 #include "BasicApplication.h"
 #include <oglplus/gl.hpp>
 #include <oglplus/all.hpp>
+#include <fstream>
 
 class GLFWInitializer
 {
@@ -112,5 +113,20 @@ void run_app(const char* window_title, int argc, char** argv)
 		app->MouseMove(width / 2, height / 2, width, height);
 
 		run_loop(app, window, width, height);
+	}
+}
+
+std::string read_from_file(const std::string filename)
+{
+	std::ifstream ifs(filename);
+	if (ifs.is_open())
+	{
+		std::string content((std::istreambuf_iterator<char>(ifs)),
+			(std::istreambuf_iterator<char>()));
+		return content;
+	}
+	else
+	{
+		return std::string();
 	}
 }

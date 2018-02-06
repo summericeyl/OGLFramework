@@ -4,6 +4,7 @@
 #include <gl/glew.h>
 #include <GLFW/glfw3.h>
 #include <memory>
+#include <string>
 
 class BasicApp
 {
@@ -62,7 +63,9 @@ public:
 	}
 };
 
+
 std::unique_ptr<BasicApp> makeExample();
 void run_app(const char* window_title, int argc, char** argv);
+std::string read_from_file(const std::string filename);
 
 #endif
